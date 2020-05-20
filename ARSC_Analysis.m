@@ -1,3 +1,4 @@
+%Thank you everyone, this is my first change in github
 clear all;
 Peaks=[];
 AAAA=[];
@@ -600,3 +601,4 @@ end
 
 X=reshape(X,newdims);
  end
+ 
