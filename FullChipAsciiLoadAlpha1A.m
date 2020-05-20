@@ -1,4 +1,4 @@
-clear all;
+%clear all;
 
 path='C:\Users\gauta\Desktop\DESKTOP\matlabhelprequest files\11032019_Friday2by6l_5datas1' %file path minus extension
 LoadExtension='_1.txt';
@@ -9,7 +9,9 @@ filename2=strcat(path,SaveExtension)
 
 
 fid = fopen(filename1, 'rt');
-data = textscan(fid,'%s %f %f %f','headerlines', 1, 'delimiter', ',');
+
+
+data = textscan(fid,'%s','headerlines', 1, 'delimiter', ',');
 fclose(fid);
 chr=data{1}{1};
 chr=erase(chr,'"Wavelength"');
@@ -19,19 +21,19 @@ H=M;
 
 
 
-for n= 1:399
+for n= 1:400
     
-    chrr=data{1}{3+n};
-    %chrr=erase(chrr,'"1 "');
+    chrr=data{1}{2+n};
+    chrr=erase(chrr,'"1"');
     D = textscan(chrr,'%f'); 
     D{1}(1)=[];
 
-    A=cat(2,C{1},D{1});
+    a=cat(2,C{1},D{1});
 
     sensitivity=0.041;
 
 
-     M=cat(2,M,A(:,2));
+     M=cat(2,M,a(:,2));
    
 end
 
@@ -44,7 +46,7 @@ CCDStep=(W(1)-W(1340))/1340
 
 %%
 
-H=hampel(M,5);    
+H=hampel(M,3);    
 figure('name',"Raw Data")
 waterfall(M);
 
