@@ -4,7 +4,7 @@ AAAA=[];
 K=[];
 %% Datafiles
 
-path='C:\Users\gauta\Desktop\11172019\5by5\11172019_ROI_5by5_600sec_14'%file path minus extension
+path='C:\Users\gauta\Desktop\12062019\Diamond_spectra_2_GOOD'%file path minus extension
 LoadExtension='Vars';
 SaveExtension='Analysis';
 filename1=strcat(path,LoadExtension)
@@ -16,7 +16,7 @@ filename2=strcat(path,SaveExtension)
 % totpixels=400; %total amount of strips
 % CCDDistance=35; %image size in Microns;
 % pixsize= CCDDistance/totpixels;
-aproxX=567;  %approximate peak location
+aproxX=1330;  %approximate peak location
 
 %%  CCD Setup
 
@@ -39,18 +39,18 @@ correction=0.0000 %Max Wavenumber
 %step=0.61;     %CCD datapoint separation
 %t=1831.793;     %Max Wavenumber
 
-for n= 1:1340
+for n= 1:1100
   
 XX(n)=t;  %X axis values
 t=t-step-correction;
 
 end
 %% Window Setting
-winstart=545
-winend=585
+winstart=1300
+winend=1400
 %% Binning  Setup
 startpixel=1; %starting Strip
-endpixel= 390;
+endpixel= 60;
 numbin=10;  %Number of Spectra per Bin
 DatSetTot=(endpixel-startpixel)/numbin; % Total Number of Bins
 range=endpixel-startpixel;
@@ -240,7 +240,7 @@ background=fitresult.back;
     
     Intensities(b)=fitresult.a;
     Ierr(b)=(errors(2,2)-errors(1,2))/3.92;
-     for i = 495:1460
+     for i = 500.36:1499.8
 
         L(i)=(fitresult(i)-fitresult.back);
         
